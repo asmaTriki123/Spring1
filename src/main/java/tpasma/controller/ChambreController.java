@@ -59,5 +59,14 @@ public class ChambreController {
     }
     
     
-   
+    @PostMapping("/{chambreId}/attribuer/{etudiantId}")
+    public Chambre attribuerChambre(@PathVariable Long chambreId, @PathVariable Long etudiantId) {
+        return chambreService.attribuerChambre(chambreId, etudiantId);
+    }
+
+    @PostMapping("/{chambreId}/liberer/{etudiantId}")
+    public ResponseEntity<Chambre> libererChambre(@PathVariable Long chambreId, @PathVariable Long etudiantId) {
+        Chambre chambreLiberee = chambreService.libererChambre(chambreId, etudiantId);
+        return ResponseEntity.ok(chambreLiberee);
+    }
 }
